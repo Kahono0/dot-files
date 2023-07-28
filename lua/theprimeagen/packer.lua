@@ -21,7 +21,17 @@ return require('packer').startup(function(use)
           vim.g.material_style = "oceanic"
 	  end
   })
+    vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 
+    use {
+  "nvim-neo-tree/neo-tree.nvim",
+    branch = "v2.x",
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    }
+  }
   use({
       "folke/trouble.nvim",
       config = function()
@@ -33,6 +43,7 @@ return require('packer').startup(function(use)
           }
       end
   })
+use ({ 'projekt0n/github-nvim-theme' })
 use 'ray-x/go.nvim'
 use 'ray-x/guihua.lua' -- recommended if need floating window support
 use 'neovim/nvim-lspconfig'
@@ -79,7 +90,14 @@ use 'nvim-treesitter/nvim-treesitter'
   use("github/copilot.vim")
   use("eandrju/cellular-automaton.nvim")
   use("laytan/cloak.nvim")
-
+  use { 'mhartington/formatter.nvim' }
+  use {
+    'akinsho/flutter-tools.nvim',
+    requires = {
+        'nvim-lua/plenary.nvim',
+        'stevearc/dressing.nvim', -- optional for vim.ui.select
+    },
+  }
   use({ "elixir-tools/elixir-tools.nvim", requires = { "nvim-lua/plenary.nvim" }})
 
 end)

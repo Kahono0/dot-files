@@ -119,15 +119,35 @@ _G.packer_plugins = {
     path = "/home/kahono/.local/share/nvim/site/pack/packer/start/copilot.vim",
     url = "https://github.com/github/copilot.vim"
   },
+  ["dressing.nvim"] = {
+    loaded = true,
+    path = "/home/kahono/.local/share/nvim/site/pack/packer/start/dressing.nvim",
+    url = "https://github.com/stevearc/dressing.nvim"
+  },
   ["elixir-tools.nvim"] = {
     loaded = true,
     path = "/home/kahono/.local/share/nvim/site/pack/packer/start/elixir-tools.nvim",
     url = "https://github.com/elixir-tools/elixir-tools.nvim"
   },
+  ["flutter-tools.nvim"] = {
+    loaded = true,
+    path = "/home/kahono/.local/share/nvim/site/pack/packer/start/flutter-tools.nvim",
+    url = "https://github.com/akinsho/flutter-tools.nvim"
+  },
+  ["formatter.nvim"] = {
+    loaded = true,
+    path = "/home/kahono/.local/share/nvim/site/pack/packer/start/formatter.nvim",
+    url = "https://github.com/mhartington/formatter.nvim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/kahono/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
+  },
+  ["github-nvim-theme"] = {
+    loaded = true,
+    path = "/home/kahono/.local/share/nvim/site/pack/packer/start/github-nvim-theme",
+    url = "https://github.com/projekt0n/github-nvim-theme"
   },
   ["go.nvim"] = {
     loaded = true,
@@ -165,6 +185,16 @@ _G.packer_plugins = {
     path = "/home/kahono/.local/share/nvim/site/pack/packer/start/material",
     url = "https://github.com/marko-cerovac/material.nvim"
   },
+  ["neo-tree.nvim"] = {
+    loaded = true,
+    path = "/home/kahono/.local/share/nvim/site/pack/packer/start/neo-tree.nvim",
+    url = "https://github.com/nvim-neo-tree/neo-tree.nvim"
+  },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/home/kahono/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
+  },
   ["nvim-cmp"] = {
     loaded = true,
     path = "/home/kahono/.local/share/nvim/site/pack/packer/start/nvim-cmp",
@@ -184,6 +214,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/kahono/.local/share/nvim/site/pack/packer/start/nvim-treesitter-context",
     url = "https://github.com/nvim-treesitter/nvim-treesitter-context"
+  },
+  ["nvim-web-devicons"] = {
+    loaded = true,
+    path = "/home/kahono/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
