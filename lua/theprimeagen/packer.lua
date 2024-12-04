@@ -99,6 +99,7 @@ use 'nvim-treesitter/nvim-treesitter'
     },
   }
   use({ "elixir-tools/elixir-tools.nvim", requires = { "nvim-lua/plenary.nvim" }})
+  use({ "mattn/vim-goimports"})
 
 end)
 

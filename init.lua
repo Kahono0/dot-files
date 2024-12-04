@@ -51,5 +51,3 @@ require("neo-tree").setup({
   -- Other options ...
 })
 
-require("flutter-tools").setup {} -- use defaults
-
