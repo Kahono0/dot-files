@@ -1,6 +1,21 @@
 require("theprimeagen")
 require'lspconfig'.gopls.setup{}
 require'lspconfig'.pyright.setup{}
+
+require'lspconfig'.templ.setup{}
+require'lspconfig'.tailwindcss.setup({
+    on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { "templ", "astro", "javascript", "typescript", "react" },
+    settings = {
+      tailwindCSS = {
+        includeLanguages = {
+          templ = "html",
+        },
+      },
+    },
+})
+
 require("neo-tree").setup({
     filesystem = {
         filtered_items = {
