@@ -11,7 +11,7 @@ require'lspconfig'.pyright.setup{}
 require'lspconfig'.tailwindcss.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { "templ", "astro", "javascript", "typescript", "react" },
+    filetypes = { "templ", "astro", "javascript", "typescript", "react", "html" },
     settings = {
       tailwindCSS = {
         includeLanguages = {
@@ -20,6 +20,15 @@ require'lspconfig'.tailwindcss.setup({
       },
     },
 })
+
+require("mason").setup()
+require("mason-lspconfig").setup {
+  ensure_installed = { "cssls" }
+}
+
+
+require'lspconfig'.cssls.setup{}
+
 
 require'lspconfig'.emmet_ls.setup({
     -- on_attach = on_attach,
@@ -34,6 +43,23 @@ require'lspconfig'.emmet_ls.setup({
       },
     }
 })
+
+local nvim_lsp = require('lspconfig')
+
+nvim_lsp.clangd.setup{
+  cmd = { "clangd", "--background-index" },  -- optional args
+  filetypes = { "c", "cpp", "objc", "objcpp" },
+  root_dir = nvim_lsp.util.root_pattern("compile_commands.json", ".git"),
+  on_attach = function(client, bufnr)
+    -- Keybindings
+    local bufopts = { noremap=true, silent=true, buffer=bufnr }
+    vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
+    vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
+    vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
+    vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
+  end,
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
+}
 
 require("neo-tree").setup({
     filesystem = {
@@ -101,3 +127,23 @@ require("neo-tree").setup({
  end
 --
  vim.api.nvim_create_autocmd({ "BufWritePre" }, { pattern = { "*.templ" }, callback = templ_format })
+
+ local prettier = require("prettier")
+
+prettier.setup({
+  bin = 'prettierd', -- or `'prettierd'` (v0.23.3+)
+  filetypes = {
+    "css",
+    "graphql",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "less",
+    "markdown",
+    "scss",
+    "typescript",
+    "typescriptreact",
+    "yaml",
+  },
+})

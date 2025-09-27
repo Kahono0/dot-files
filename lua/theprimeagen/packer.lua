@@ -44,6 +44,7 @@ return require('packer').startup(function(use)
           }
       end
   })
+use 'MunifTanjim/prettier.nvim'
 use ({ 'projekt0n/github-nvim-theme' })
 use 'ray-x/go.nvim'
 use 'ray-x/guihua.lua' -- recommended if need floating window support

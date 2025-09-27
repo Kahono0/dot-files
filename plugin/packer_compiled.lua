@@ -240,6 +240,11 @@ _G.packer_plugins = {
     path = "/home/kahono/.local/share/nvim/site/pack/packer/start/plenary.nvim",
     url = "https://github.com/nvim-lua/plenary.nvim"
   },
+  ["prettier.nvim"] = {
+    loaded = true,
+    path = "/home/kahono/.local/share/nvim/site/pack/packer/start/prettier.nvim",
+    url = "https://github.com/MunifTanjim/prettier.nvim"
+  },
   ["refactoring.nvim"] = {
     loaded = true,
     path = "/home/kahono/.local/share/nvim/site/pack/packer/start/refactoring.nvim",
