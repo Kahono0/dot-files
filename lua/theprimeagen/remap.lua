@@ -66,3 +66,7 @@ vim.keymap.set("n", "<leader>pf", function()
   vim.cmd("edit") -- Reload buffer to reflect changes
 end, { desc = "Format buffer with Prettier" })
 
+-- Set a keymap (e.g., <leader>d) to open the float window with the full message
+vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Open diagnostic float' })
+
+
