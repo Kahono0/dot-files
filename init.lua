@@ -1,24 +1,32 @@
 require("theprimeagen")
-require'lspconfig'.gopls.setup{}
-require'lspconfig'.pyright.setup{}
+local capabilities = rawget(_G, "capabilities") or require('cmp_nvim_lsp').default_capabilities()
 
- require'lspconfig'.templ.setup{}
- require'lspconfig'.html.setup({
-     on_attach = on_attach,
-     capabilities = capabilities,
-     filetypes = { "html", "templ" },
- })
-require'lspconfig'.tailwindcss.setup({
-    on_attach = on_attach,
-    capabilities = capabilities,
-    filetypes = { "templ", "astro", "javascript", "typescript", "react", "html" },
-    settings = {
-      tailwindCSS = {
-        includeLanguages = {
-          templ = "html",
-        },
+local function setup_server(name, config)
+  vim.lsp.config(name, config or {})
+  vim.lsp.enable(name)
+end
+
+setup_server('gopls')
+setup_server('pyright')
+
+setup_server('templ')
+setup_server('html', {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "html", "templ" },
+})
+
+setup_server('tailwindcss', {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = { "templ", "astro", "javascript", "typescript", "react", "html" },
+  settings = {
+    tailwindCSS = {
+      includeLanguages = {
+        templ = "html",
       },
     },
+  },
 })
 
 require("mason").setup()
@@ -27,10 +35,10 @@ require("mason-lspconfig").setup {
 }
 
 
-require'lspconfig'.cssls.setup{}
+setup_server('cssls')
 
 
-require'lspconfig'.emmet_ls.setup({
+setup_server('emmet_ls', {
     -- on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
@@ -44,13 +52,13 @@ require'lspconfig'.emmet_ls.setup({
     }
 })
 
-local nvim_lsp = require('lspconfig')
-
-nvim_lsp.clangd.setup{
-  cmd = { "clangd", "--background-index" },  -- optional args
+setup_server('clangd', {
+  cmd = { "clangd", "--background-index" },
   filetypes = { "c", "cpp", "objc", "objcpp" },
-  root_dir = nvim_lsp.util.root_pattern("compile_commands.json", ".git"),
-  on_attach = function(client, bufnr)
+  root_dir = function(bufnr)
+    return vim.fs.root(bufnr, { "compile_commands.json", ".git" })
+  end,
+  on_attach = function(_, bufnr)
     -- Keybindings
     local bufopts = { noremap=true, silent=true, buffer=bufnr }
     vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
@@ -59,7 +67,7 @@ nvim_lsp.clangd.setup{
     vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
   end,
   capabilities = require('cmp_nvim_lsp').default_capabilities(),
-}
+})
 
 require("neo-tree").setup({
     filesystem = {

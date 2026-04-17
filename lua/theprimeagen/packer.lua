@@ -49,6 +49,10 @@ use ({ 'projekt0n/github-nvim-theme' })
 use 'ray-x/go.nvim'
 use 'ray-x/guihua.lua' -- recommended if need floating window support
 use 'neovim/nvim-lspconfig'
+use 'williamboman/mason.nvim'
+use 'williamboman/mason-lspconfig.nvim'
+use 'hrsh7th/nvim-cmp'
+use 'hrsh7th/cmp-nvim-lsp'
 use 'nvim-treesitter/nvim-treesitter'
   use 'wakatime/vim-wakatime'
 
@@ -64,29 +68,6 @@ use 'nvim-treesitter/nvim-treesitter'
   use("mbbill/undotree")
   use("tpope/vim-fugitive")
   use("nvim-treesitter/nvim-treesitter-context");
-
-  use {
-	  'VonHeikemen/lsp-zero.nvim',
-	  branch = 'v1.x',
-	  requires = {
-		  -- LSP Support
-		  {'neovim/nvim-lspconfig'},
-		  {'williamboman/mason.nvim'},
-		  {'williamboman/mason-lspconfig.nvim'},
-
-		  -- Autocompletion
-		  {'hrsh7th/nvim-cmp'},
-		  {'hrsh7th/cmp-buffer'},
-		  {'hrsh7th/cmp-path'},
-		  {'saadparwaiz1/cmp_luasnip'},
-		  {'hrsh7th/cmp-nvim-lsp'},
-		  {'hrsh7th/cmp-nvim-lua'},
-
-		  -- Snippets
-		  {'L3MON4D3/LuaSnip'},
-		  {'rafamadriz/friendly-snippets'},
-	  }
-  }
 
   use("folke/zen-mode.nvim")
   use("github/copilot.vim")
